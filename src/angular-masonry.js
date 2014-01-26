@@ -134,6 +134,10 @@
             
             // Assign to scope to share with the controller
             scope.mason = new Masonry(element[0], options)
+
+            // Assign itemSelector to scope to share with the child
+            scope.itemSelector = options.itemSelector.slice(1);
+
             var preserveOrder = scope.$eval(attrs.preserveOrder);
             ctrl.preserveOrder = (preserveOrder !== false && attrs.preserveOrder !== undefined);
 
@@ -150,6 +154,10 @@
         link: {
           pre: function preLink(scope, element, attrs, ctrl) {
             var id = scope.$id, index;
+
+            if (!element.hasClass(scope.itemSelector)) {
+              element.addClass(scope.itemSelector);
+            }
 
             ctrl.appendBrick(element, id);
             element.on('$destroy', function () {
