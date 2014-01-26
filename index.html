@@ -37,6 +37,7 @@
             src="http://ghbtns.com/github-btn.html?user=passy&repo=angular-masonry&type=follow&size=large&count=true"
             allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
         </div>
+        <hr>
         <div class="row">
             <div class="span12">
                 <h2>Getting Started</h2>
@@ -54,28 +55,33 @@
                 <a href="./angular-masonry.min.js">angular-masonry.min.js</a>.
             </div>
         </div>
-        <hr>
-        <div class="row" ng-controller="DemoCtrl">
+        
+        <div class="row">
             <div class="span12">
-                <h2>In Action</h2>
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="add()">Add</button>
-                    <button class="btn btn-danger" ng-click="remove()">Remove</button>
-                </div>
+                <h2>Demo of problem if not using ng-repeat</h2>
                 <div masonry>
-                    <div class="masonry-brick" ng-repeat="brick in bricks">
-                        <img ng-src="{{ brick.src }}" alt="A masonry brick">
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/100/?2296" alt="A masonry brick">
+                    </div>
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/300/?9982" alt="A masonry brick">
+                    </div>
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/200/?3672" alt="A masonry brick">
+                    </div>
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/400/?7152" alt="A masonry brick">
+                    </div>
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/200/?3552" alt="A masonry brick">
+                    </div>
+                    <div class="masonry-brick">
+                        <img ng-src="http://lorempixel.com/g/400/250/?9231" alt="A masonry brick">
                     </div>
                 </div>
-
-                <h2>Code</h2>
-                <pre ng-non-bindable>&lt;div <strong>masonry</strong>&gt;
-    &lt;div <strong>class="masonry-brick"</strong> ng-repeat="brick in bricks"&gt;
-        &lt;img ng-src="{{ brick.src }}" alt="A masonry brick"&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</pre>
             </div>
         </div>
+        <hr>
 
         <a href="https://github.com/passy/angular-masonry"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
         <script src="bower_components/jquery/jquery.js"></script>
