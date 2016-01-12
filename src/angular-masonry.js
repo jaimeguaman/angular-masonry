@@ -57,12 +57,12 @@
         angular.element(_el).addClass('loaded');
       }
 
-      this.appendBrick = function appendBrick(element, id) {
+      this.addBrick = function addBrick(method, element, id) {
         if (destroyed) {
           return;
         }
 
-        function _append() {
+        function _add() {
           if (Object.keys(bricks).length === 0) {
             mason.resize();
           }
@@ -70,7 +70,7 @@
             // Keep track of added elements.
             bricks[id] = true;
             defaultLoaded(element);
-            mason.appended(element);
+            mason[method](element);
           }
         }
 
@@ -83,11 +83,11 @@
         }
 
         if (self.preserveOrder) {
-          _append();
+          _add();
           imagesLoaded(element, _layout);
         } else {
           imagesLoaded(element, function imagesLoaded() {
-            _append();
+            _add();
             _layout();
           });
         }
@@ -131,7 +131,7 @@
               itemSelector: attrs.itemSelector || '.masonry-brick',
               columnWidth: parseInt(attrs.columnWidth, 10)
             }, attrOptions || {});
-            
+
             // Assign to scope to share with the controller
             scope.mason = new Masonry(element[0], options)
             var preserveOrder = scope.$eval(attrs.preserveOrder);
@@ -150,8 +150,10 @@
         link: {
           pre: function preLink(scope, element, attrs, ctrl) {
             var id = scope.$id, index;
+            var prependBrick = scope.$eval(attrs.prepend);
+            var method = prependBrick ? 'prepended' : 'appended';
 
-            ctrl.appendBrick(element, id);
+            ctrl.addBrick(method, element, id);
             element.on('$destroy', function () {
               ctrl.removeBrick(id, element);
             });
